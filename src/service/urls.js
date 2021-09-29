@@ -38,6 +38,7 @@ export default {
         // 实名验证
         checkReal: user + "/check/checkReal",
     },
+    
     // 用户注册接口
     registerUser: {
         // 账号密码注册
