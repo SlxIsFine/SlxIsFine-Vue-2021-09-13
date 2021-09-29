@@ -1,0 +1,187 @@
+<template>
+  <div class="bg-box">
+    <div class="bg">
+      <!-- <img id="home-bg" class="fade-in" src="../../assets/img/pf/mainBg.jpg" alt /> -->
+      <!-- <div class="introduce absolute-center"> -->
+      <!-- <p>挖掘文化新价值</p>
+        <p>带你走入传统文化新世界</p>
+        <p>FolkSpace</p> -->
+      <!-- 入场动画 -->
+      <HomeAnimate class="home-animation" @animationEnd="onAnimationEnd" />
+      <!-- 首页导航 -->
+      <HomeMain class="home-main" ref="homeMain" />
+      <!-- </div> -->
+    </div>
+    <!-- <div class="bg" v-for="(item, idx) in bgs" :key="idx">
+      <img class="other-img" :src="item.src" alt />
+      <span class="title">{{ item.title }}</span>
+      <div class="desc absolute-center">
+        <p v-for="p in item.desc" :key="p">{{ p }}</p>
+      </div>
+    </div> -->
+  </div>
+</template>
+
+<script>
+import bg1 from "@/assets/img/home-bg1.jpg";
+import bg2 from "@/assets/img/home-bg2.jpg";
+import bg3 from "@/assets/img/home-bg3.jpg";
+import Logo from "@/components/common/UI/Logo.vue";
+import {
+  computed,
+  onMounted,
+  reactive,
+  ref,
+  watch,
+  watchEffect,
+} from "@vue/runtime-core";
+import HomeAnimate from "./HomeAnimate.vue";
+import HomeMain from "./HomeMain.vue";
+export default {
+  components: {
+    Logo,
+    HomeAnimate,
+    HomeMain,
+  },
+  setup() {
+    const bgs = [
+      {
+        src: bg1,
+        title: "京剧",
+        desc: [
+          "京剧，又称平剧、京戏等，是中国影响最大的戏曲剧种，分布地以北京为中心，遍及全国各地。",
+          "清代乾隆五十五年（1790年）起，原在南方演出的三庆、四喜、春台、和春四大徽班陆续进入北京，与来自湖北的汉调艺人合作，同时接受了昆曲、秦腔的部分剧目、曲调和表演方法，又吸收了一些地方民间曲调，通过不断的交流、融合，最终形成京剧。",
+          "京剧流播全国，影响甚广，有“国剧”之称。以梅兰芳命名的京剧表演体系被视为东方戏剧表演体系的代表，为世界三大表演体系之一。京剧是中华民族传统文化的重要表现形式，其中的多种艺术元素被用作中国传统文化的象征符号。",
+        ],
+      },
+      {
+        src: bg2,
+        title: "武术",
+        desc: [
+          "中国武术，以中国传统文化为基础的、停止战斗的技术；是消停战事、维护和平的技术；是物质文明的保障和导向，带领修习者进入认识人与自然、社会客观规律的传统教化方式。",
+          "上武得道，平天下；中武入喆，安身心；下武精技，防侵害。",
+          "有着悠久的历史，最早可以追溯到商周时期，具有极其广泛的群众基础，是中国劳动人民在长期的社会实践中不断积累和丰富起来的一项宝贵的文化遗产。是中华人民的优秀文化遗产之一。",
+        ],
+      },
+      {
+        src: bg3,
+        title: "民谣",
+        desc: [
+          "民间流行的、赋予民族色彩的歌曲，称为民谣或民歌。民谣的历史悠远，故其作者多不知名。民谣的内容丰富，有宗教的、爱情的、战争的、工作的，也有饮酒、舞蹈作乐、祭典等等。",
+          "民谣表现一个民族的感情与习尚，因此各有其独特的音阶与情调风格。如法国民谣的蓬勃、意大利民谣的热情、英国民谣的淳朴、日本民谣的悲愤、西班牙民谣的狂放不羁、中国民谣的缠绵悱恻，都表现了强烈的民族气质与色彩。",
+        ],
+      },
+    ];
+
+    // const init = () => {
+    //   const w = window.innerWidth / 30;
+    //   document.querySelector(".introduce").style.fontSize = w * 1.3 + "px";
+    //   document.querySelectorAll(".title").forEach((cur) => {
+    //     cur.style.fontSize = w + "px";
+    //     cur.style.top = w + "px";
+    //     cur.style.left = w * 3 + "px";
+    //   });
+    //   document.querySelectorAll(".desc").forEach((cur) => {
+    //     cur.style.fontSize = w / 1.5 + "px";
+    //   });
+    // };
+    // onMounted(() => init());
+    // window.onresize = () => init();
+    let showLogo = ref(false);
+    onMounted(() => {
+      showLogo.value = true;
+    });
+    let homeMain = ref(null);
+    let onAnimationEnd = () => {
+      console.log("ani end");
+      homeMain.value.showSelf = true;
+    };
+    return {
+      bgs,
+      showLogo,
+      homeMain,
+      onAnimationEnd,
+    };
+  },
+};
+</script>
+<style lang='scss' scoped>
+  .bg {
+    width: 99vw;
+    height: 90vh;
+    overflow-x:hidden ;
+  }
+@media screen and (min-width: 1366px) {
+  // pc端
+
+}
+.bg {
+  position: relative;
+  box-sizing: border-box;
+
+  @media (orientation: landscape) {
+    #home-bg {
+      height: calc(100vh - 80px);
+    }
+  }
+  @media (orientation: portrait) {
+    #home-bg,
+    .home-main {
+      height: auto;
+    }
+  }
+  .home-animation {
+    width: 100%;
+    height: 100%;
+  }
+  .home-main {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+  }
+  .other-img {
+    filter: brightness(0.8);
+  }
+  .introduce {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 3vw;
+  }
+  .title {
+    position: absolute;
+    color: #fff;
+    top: 2vw;
+    left: 6vw;
+    font-size: 3vw;
+  }
+  .desc {
+    width: 80%;
+    padding: calc(50vw - 40%) 0;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 1.5s;
+    font-size: 1.5vw;
+    &:hover {
+      opacity: 1;
+    }
+    p {
+      text-indent: 2em;
+    }
+  }
+}
+.fade-in {
+  animation: fadeIn 1.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+</style>
