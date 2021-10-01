@@ -17,7 +17,7 @@
         <!-- 上方三个按钮 -->
         <div class="row flex-row-between">
           <div class="col">
-            <ColorButton class="color-btn">出售订单</ColorButton>
+            <ColorButton class="color-btn" @click="route('saleOrders')">出售订单</ColorButton>
           </div>
           <div class="col">
             <ColorButton class="color-btn">购买订单</ColorButton>
@@ -44,6 +44,7 @@ import ColorButton from "@/components/common/UI/ColorButton.vue";
 import InfoForm from "@/components/personalPage/InfoForm.vue";
 import TabList from "@/components/personalPage/TabList.vue"
 import { markRaw, reactive, ref } from "vue";
+import {useRouter} from "vue-router"
 // 我拥有的
 import Own from "@/components/personalPage/Own.vue"
 // 我发布的
@@ -53,6 +54,7 @@ import MyFavorite from "@/components/personalPage/MyFavorite.vue"
 // 待上架的
 import WaitingForSale from "@/components/personalPage/WaitingForSale.vue"
 let username = ref("小刘");
+const router =useRouter()
 const tabConfig=reactive({
   data:[
     {
@@ -81,6 +83,9 @@ const tabConfig=reactive({
     },
   ]
 })
+let route=(name)=>{
+  router.push({name:name})
+}
 </script>
 <style lang='scss' scoped>
 .personal-page {
@@ -178,4 +183,5 @@ const tabConfig=reactive({
     }
   }
 }
+
 </style>
