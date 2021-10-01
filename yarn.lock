@@ -69,10 +69,10 @@
   "resolved" "https://registry.nlark.com/@types/lodash/download/@types/lodash-4.14.170.tgz?cache=0&sync_timestamp=1621593293742&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40types%2Flodash%2Fdownload%2F%40types%2Flodash-4.14.170.tgz"
   "version" "4.14.170"
 
-"@vitejs/plugin-vue@^1.2.3":
-  "integrity" "sha1-Lo4AixzDpq0d++x1dDx//ZtIcqY="
-  "resolved" "https://registry.nlark.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.2.3.tgz?cache=0&sync_timestamp=1622507257724&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40vitejs%2Fplugin-vue%2Fdownload%2F%40vitejs%2Fplugin-vue-1.2.3.tgz"
-  "version" "1.2.3"
+"@vitejs/plugin-vue@^1.9.2":
+  "integrity" "sha1-cjTvuMPD1gx+rDUKk1B0qxggrg4="
+  "resolved" "https://registry.npmmirror.com/@vitejs/plugin-vue/download/@vitejs/plugin-vue-1.9.2.tgz"
+  "version" "1.9.2"
 
 "@vue/compiler-core@3.1.1":
   "integrity" "sha1-TyxdcOq9RUZ1cUzIvSuX9qjvsZY="
@@ -243,7 +243,7 @@
 
 "axios@^0.21.4":
   "integrity" "sha1-xnuQ3AVo5cHPKwuFjEO6KOLtpXU="
-  "resolved" "https://registry.nlark.com/axios/download/axios-0.21.4.tgz?cache=0&sync_timestamp=1630942656836&other_urls=https%3A%2F%2Fregistry.nlark.com%2Faxios%2Fdownload%2Faxios-0.21.4.tgz"
+  "resolved" "https://registry.nlark.com/axios/download/axios-0.21.4.tgz?cache=0&sync_timestamp=1630942582656&other_urls=https%3A%2F%2Fregistry.nlark.com%2Faxios%2Fdownload%2Faxios-0.21.4.tgz"
   "version" "0.21.4"
   dependencies:
     "follow-redirects" "^1.14.0"
@@ -978,6 +978,11 @@
   "integrity" "sha1-90BXfCMXbGIFsSGylzUU6t4bIjA="
   "resolved" "https://registry.npm.taobao.org/mitt/download/mitt-2.1.0.tgz"
   "version" "2.1.0"
+
+"moment@^2.29.1":
+  "integrity" "sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M="
+  "resolved" "https://registry.npm.taobao.org/moment/download/moment-2.29.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmoment%2Fdownload%2Fmoment-2.29.1.tgz"
+  "version" "2.29.1"
 
 "ms@2.1.2":
   "integrity" "sha1-0J0fNXtEP0kzgqjrPM0YOHKuYAk="

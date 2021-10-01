@@ -3,14 +3,14 @@ import Home from '../views/Home.vue'
 
 const routes = [
   {
-    path:"/",
-    redirect:"/home"
+    path: "/",
+    redirect: "/home"
 
   },
   {
     path: "/main",
-    name:"main",
-    component:()=>import("../views/MainPage.vue"),
+    name: "main",
+    component: () => import("../views/MainPage.vue"),
     children: [
       {
         path: '/',
@@ -64,22 +64,45 @@ const routes = [
       {
         path: '/:target/details/:id',
         name: 'details',
-        component: () => import('../views/Details.vue')
+        component: () => import('../views/Details.vue'),
+
       },
+      // 个人主页
       {
         path: '/personalPage',
         name: 'personalPage',
-        component: () => import('../views/PersonalPage.vue')
+        component: () => import('../views/PersonalPage.vue'),
+        children: [
+
+          {
+            path: "saleOrders",
+            name: "saleOrders",
+            component: () => import("../components/personalPage/saleOrders/SaleOrders.vue")
+          },
+          {
+            path: "/personalPage",
+            name: "defaultPersonal",
+            component: () => import("../components/personalPage/Default.vue")
+          },
+
+        ]
       }]
-  }
+  },
+  {
+    path: "/nftDetail",
+    name:"nftDetail",
+    component:()=>import("../components/personalPage/NftDetail.vue")
+
+  },
+
   , {
     path: "/login",
     name: "login",
-    component:()=>import("../views/Login.vue")
+    component: () => import("../views/Login.vue")
   }, {
     path: "/register",
     name: "register",
-    component:()=>import("../views/Register.vue")
+    component: () => import("../views/Register.vue")
   }
 ]
 

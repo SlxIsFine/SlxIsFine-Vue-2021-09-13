@@ -33,8 +33,10 @@ let props = defineProps({
       { name: "我收藏的NFT", id: "3" },
     ],
   },
+  tabChange: {
+    default: () => {},
+  },
 });
-console.log("hhh", props.labels);
 let labels = computed(() => props.labels);
 //是否显示下方的动画
 let showTabAnimate = computed(
@@ -48,7 +50,7 @@ let showTabAnimate = computed(
 
 //计算线的位置
 let tabPos = computed(() => {
-  console.log(tabPos.value, labels.value, currentTab.value);
+  // console.log(tabPos.value, labels.value, currentTab.value);
   if (showTabAnimate.value && currentTab.value && labels.value) {
     for (let k in labels.value) {
       if (labels.value[k].name == currentTab.value.name) {
@@ -59,14 +61,14 @@ let tabPos = computed(() => {
     return 0;
   }
 });
-let emit = defineEmit(["tabChange"]);
+// let emit = defineEmit(["tabChange"]);
 
-let currentTab = ref(null);
+let currentTab = ref(props.labels[0]);
 //点击时切换tab
 let onCheckLabel = (label) => {
   currentTab.value = label;
-
-  emit("tabChange");
+  // debugger
+  props.tabChange(label)
 };
 </script>
 <style lang="scss" scoped>
@@ -77,6 +79,7 @@ $item-h: 48px;
   height: $item-h;
   line-height: $item-h;
   font-size: 16px;
+  border-bottom: 1px solid rgba(156, 156, 156, 0.603);
   .header-item {
     width: $item-w;
     margin: 0px 6px;
@@ -88,7 +91,7 @@ $item-h: 48px;
 }
 .tab-animate {
   background-color: $rd;
-  bottom: 0px;
+  bottom: -2px;
   height: 4px;
   border-radius: 2px;
   width: $item-w;

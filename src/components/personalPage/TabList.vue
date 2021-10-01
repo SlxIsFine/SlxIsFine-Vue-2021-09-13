@@ -1,6 +1,7 @@
-<script >
-import { h, defineComponent, defineProps, computed } from "vue";
+<script>
+import { h, defineComponent, defineProps, computed, toRefs, ref, markRaw } from "vue";
 import TabHeader from "./TabHeader.vue";
+import Own from "./Own.vue";
 export default defineComponent({
   // setup() {
   //   let props = [
@@ -26,17 +27,70 @@ export default defineComponent({
   //       props.map((v) => h(v.component, v.name))
   //     );
   // },
-  setup() {
-    return () => h("div",{
-      className:"row tab-list"
-    }, [h(TabHeader)]);
+  props: {
+    config: {
+      default: {
+        data: [{ name: "我拥有的NFT", component: Own, componentProps: {} }],
+      },
+    },
+  },
+  setup(props) {
+    /**
+     * {
+     * config:{
+     * data:[{
+     * name:'',
+     * component:"",
+     * componentProps:{}
+     * }]}
+     * }
+     */
+    let { config } = toRefs(props);
+    let labels = computed(() =>
+      config.value.data.map((v, k) => {
+        return { name: v.name, id: k };
+      })
+    );
+    let curCompId = ref(0);
+    let curComp = computed(() => config.value.data[curCompId.value].component);
+    let curCompProps = computed(() => config.value.data[curCompId.value].componentProps);
+
+    return () =>
+      h(
+        "div",
+        {
+          className: "row tab-list",
+        },
+        [
+          h(TabHeader, {
+            labels: labels.value,
+            tabChange: markRaw((val) => {
+              curCompId.value = val.id;
+            }),
+          }),
+          h(
+            "div",
+            {
+              className: "tab-content",
+              change: () => {
+                console.log("click div");
+              },
+            },
+            [h(curComp.value, curCompProps.value)]
+          ),
+        ]
+      );
   },
   components: { TabHeader },
 });
 </script>
 <style lang="scss" scoped>
-.tab-list{
+.tab-list {
   height: 100%;
   min-height: 120px;
+  .tab-content {
+    width: 100%;
+    height: max-content;
+  }
 }
 </style>

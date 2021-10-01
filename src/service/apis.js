@@ -6,7 +6,7 @@ import URL from "./urls.js"
  * @returns 
  */
 export function checkUserName(userName) {
-    let url = URL.user.checkUserName
+    let url = URL.checkUser.checkName
     return postForm(url, { userName: userName })
 }
 /**
