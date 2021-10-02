@@ -2,7 +2,7 @@
   <div class="nft-info">
     <div class="info-top">
       <div class="nft-img"></div>
-      <div class="nft-info">
+      <div class="nft-info-form">
         <div>NFT作品名称</div>
         <div>发行人/单位</div>
         <div>
@@ -32,12 +32,14 @@
       </div>
     </div>
     <div class="info-bottom">
-      <table>
+      <table class="nft-table">
       <tr>
-          <th></th>
+          <th v-for="h in th" :key="h">{{h}}</th>
       </tr>
-        <tr>
-          <td></td>
+        <tr v-for="row,k in datas" :key="k">
+          <td v-for="item in row" :key="item">
+              {{item}}
+          </td>
         </tr>
       </table>
     </div>
@@ -51,6 +53,12 @@ import FileUploader from "@/components/common/form/FileUploader.vue";
 import { ref } from "vue";
 let th=["时间","用户名","购买NFT编号","该NFT区块链地址"]
 let datas=[
+    ["2020-09-21","交易者名字","123456789","0x0601...266d"],
+    ["2020-09-21","交易者名字","123456789","0x0601...266d"],
+    ["2020-09-21","交易者名字","123456789","0x0601...266d"],
+    ["2020-09-21","交易者名字","123456789","0x0601...266d"],
+    ["2020-09-21","交易者名字","123456789","0x0601...266d"],
+    ["2020-09-21","交易者名字","123456789","0x0601...266d"],
     ["2020-09-21","交易者名字","123456789","0x0601...266d"]
 ]
 </script>
@@ -68,17 +76,44 @@ let datas=[
     width: 100%;
     height: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     .nft-img {
-      width: 400px;
+      width: 500px;
       height: 400px;
       background-color: red;
+    }
+    .nft-info-form{
+        width: calc( 60% - 400px);
+        height: 90%;
+        padding-left: 32px;
     }
   }
   .info-bottom {
     width: 100%;
     height: 50%;
+    padding: 32px;
+    box-sizing: border-box;
+    .nft-table{
+        width: 100%;
+        tr{
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            margin: 12px 0px;
+            th{
+                width: 200px;
+                text-align: center;
+                // background-color: grey;
+            }
+            td{
+                width: 200px;
+                text-align: center;
+            }
+        }
+    
+}
   }
 }
+
 </style>

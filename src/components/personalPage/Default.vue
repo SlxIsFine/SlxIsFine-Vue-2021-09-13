@@ -5,7 +5,7 @@
       <div class="user-wrapper">
         <Avatar size="64" />
         <div>{{username}}</div>
-        <div class="release-btn hover-bg-btn">
+        <div class="release-btn hover-bg-btn" @click="route('release')">
           <span style="z-inde">点击发布NFT</span>
         </div>
       </div>
@@ -20,10 +20,10 @@
             <ColorButton class="color-btn" @click="route('saleOrders')">出售订单</ColorButton>
           </div>
           <div class="col">
-            <ColorButton class="color-btn">购买订单</ColorButton>
+            <ColorButton class="color-btn" @click="route('saleOrders')">购买订单</ColorButton>
           </div>
           <div class="col">
-            <ColorButton class="color-btn">提现明细</ColorButton>
+            <ColorButton class="color-btn" @click="route('moneyDetail')">提现明细</ColorButton>
           </div>
         </div>
         <!-- 下方详细信息 -->
@@ -91,6 +91,7 @@ let route=(name)=>{
 .personal-page {
   width: 100%;
   height: calc(100vh - 96px);
+  overflow: hidden;
   // background-color: blue;
   .user-bg {
     display: flex;
@@ -142,10 +143,10 @@ let route=(name)=>{
         margin-top: 6px;
       }
       .color-btn {
-        border-radius: 0px 0px 6px 6px;
-        width: 98%;
-        line-height: 50px;
-        height: 50px;
+        border-radius: 0px 0px 6px 6px !important;
+        width: 98% !important;
+        line-height: 50px !important;
+        height: 50px !important;
       }
       .col {
         width: 33%;

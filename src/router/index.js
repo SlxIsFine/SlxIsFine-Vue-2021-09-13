@@ -25,11 +25,19 @@ const routes = [
         path: '/market',
         name: 'market',
         component: () => import('../views/Market.vue'),
-        children: [{
+        children: [
+          {
           path: ':submenu',
           name: 'opera',
           component: () => import('../components/market/Opera.vue')
-        }]
+        },
+        {
+          path: '/nftInfo',
+          name: 'nftInfo',
+          component: () => import('../components/market/nftInfo/NftInfo.vue')
+        },
+
+        ]
       },
       {
         path: '/Collection',
@@ -86,14 +94,37 @@ const routes = [
           },
 
         ]
-      }]
+      },
+      {
+        path: "/release",
+        name: "release",
+        component: () => import("../components/personalPage/release/Release.vue")
+      },
+      {
+        path: "/editUserInfo",
+        name: "editUserInfo",
+        component: () => import("../components/personalPage/editUserInfo/EditUserInfo.vue")
+      },
+      {
+        path: "/onShelf",
+        name: "onShelf",
+        component: () => import("../components/personalPage/onShelf/OnShelf.vue")
+      },
+      {
+        path: "/moneyDetail",
+        name: "moneyDetail",
+        component: () => import("../components/personalPage/moneyDetail/moneyDetail.vue")
+      }
+
+    ]
   },
   {
     path: "/nftDetail",
-    name:"nftDetail",
-    component:()=>import("../components/personalPage/NftDetail.vue")
+    name: "nftDetail",
+    component: () => import("../components/personalPage/NftDetail.vue")
 
   },
+
 
   , {
     path: "/login",

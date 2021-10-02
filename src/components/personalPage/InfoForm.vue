@@ -14,9 +14,9 @@
       </div>
       <div class="row">
         <div class="col name">用户简介</div>
-        <div
-          class="col value"
-        >用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介</div>
+        <div class="col value">
+          用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介用户简介
+        </div>
       </div>
       <div class="row">
         <div class="col name">地址管理</div>
@@ -34,32 +34,42 @@
         </div>
       </div>
       <div class="row">
-        <div class="col name" style="vertical-align:middle">余额</div>
-        <div class="col value" style="vertical-align:middle">
+        <div class="col name" style="vertical-align: middle">余额</div>
+        <div class="col value" style="vertical-align: middle">
           <span class="money v-middle">￥10</span>
           <span class="to-withdraw v-middle cursor-pointer">去提现>></span>
         </div>
       </div>
       <div class="row status-btn-group">
-         <IconTextButton text="已认证" :icon="alipay" :isActive="true" activeColor="#b22631"/>
-         <IconTextButton text="未绑定" :icon="wechat"/>
-         <IconTextButton text="未绑定" :icon="wechat"/>
+        <IconTextButton
+          text="已认证"
+          :icon="alipay"
+          :isActive="true"
+          activeColor="#b22631"
+        />
+        <IconTextButton text="未绑定" :icon="wechat" />
+        <IconTextButton text="未绑定" :icon="wechat" />
       </div>
     </div>
     <div class="underline" />
     <div class="form-footer">
-      <span class="cursor-pointer">编辑个人信息></span>
+      <span class="cursor-pointer" @click="route('editUserInfo')">编辑个人信息></span>
     </div>
   </div>
 </template>
 <script setup>
 import { reactive } from "vue";
-import IconTextButton from "@/components/common/UI/IconTextButton.vue"
-import alipay from "@img/alipay.png"
-import wechat from "@img/wechat.png"
+import IconTextButton from "@/components/common/UI/IconTextButton.vue";
+import alipay from "@img/alipay.png";
+import wechat from "@img/wechat.png";
+import { useRouter } from "vue-router";
+const router = useRouter();
+let route=(name)=>{
+  router.push({name:name})
+}
 let userInfo = reactive({
   username: "小刘",
-  phone: "13445611254"
+  phone: "13445611254",
 });
 </script>
 <style lang="scss" scoped>
@@ -89,7 +99,7 @@ let userInfo = reactive({
   }
   .form-content {
     width: 100%;
-    height: 80%;
+    height: 78%;
     font-size: 14px;
     > .row {
       margin: 4px 0px;
@@ -107,7 +117,7 @@ let userInfo = reactive({
     }
     .value {
       // background-color: green;
-      width: 50%;
+      width: 60%;
       box-sizing: border-box;
       text-align: left;
       padding-left: 8px;
@@ -131,10 +141,10 @@ let userInfo = reactive({
       height: 64px;
       display: flex;
       justify-content: space-around;
-      .icon{
-          width: 48px !important;
-          height: 48px !important;
-          background-size: 100% 100% !important;
+      .icon {
+        width: 48px !important;
+        height: 48px !important;
+        background-size: 100% 100% !important;
       }
     }
   }
@@ -145,11 +155,11 @@ let userInfo = reactive({
   }
   .form-footer {
     text-align: center;
-    line-height: 32px;
-    span{
-        &:hover{
-            color: $rd;
-        }
+    line-height: 18px;
+    span {
+      &:hover {
+        color: $rd;
+      }
     }
   }
 }

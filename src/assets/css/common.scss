@@ -74,6 +74,12 @@ width: 98%;
 height: 1px;
 background-color: rgba(192, 192, 192, 0.829);
 }
+input{
+  vertical-align: middle;
+}
+label{
+  vertical-align: middle;
+}
 $pl: #f7e9ea; //浅粉
 $rd: #b22631; //深红
 $g9: #999;

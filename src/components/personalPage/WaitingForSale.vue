@@ -7,7 +7,7 @@
         :key="val.hash + key"
       >
         <ImageButton :normalImg="product" class="product-btn" />
-        <div class="sj-btn">上架</div>
+        <div class="sj-btn" @click="route('onShelf')">上架</div>
       </div>
     </SiderCardBox>
     <div class="view-all">查看全部</div>
@@ -18,6 +18,12 @@ import { ref, onMounted } from "vue";
 import SiderCardBox from "@/components/common/SiderCardBox.vue";
 import ImageButton from "@/components/common/UI/ImageButton.vue";
 import product from "@img/product.png";
+import { useRouter } from "vue-router";
+
+let router = useRouter();
+let route = (name, params) => {
+  router.push({ name: name, params: params });
+};
 let sliderBox = ref(null);
 let ownProducts = [
   {
@@ -66,23 +72,22 @@ onMounted(() => {});
   .prodtct-wrapper {
     width: 350px;
     height: 360px;
-      margin: 0px 10px;
+    margin: 0px 10px;
     text-align: center;
     .product-btn {
       width: 350px;
       height: 320px;
-    
     }
-    .sj-btn{
-        display: inline-block;
-        width: 80px;
-        height: 32px;
-        line-height: 32px;
-        color: white;
-        background-color: $rd;
-        font-size: 16px;
-        border-radius: 4px;
-        cursor: pointer;
+    .sj-btn {
+      display: inline-block;
+      width: 80px;
+      height: 32px;
+      line-height: 32px;
+      color: white;
+      background-color: $rd;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   }
   .view-all {
