@@ -3,6 +3,8 @@
     class="file-uploader"
     :auto-upload="false"
     :on-change="handleFileChange"
+    :drag="true"
+    multiple
     ref="fileUpload"
   >
     <slot>
