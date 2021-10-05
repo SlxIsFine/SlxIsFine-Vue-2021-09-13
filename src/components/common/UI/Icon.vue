@@ -17,9 +17,9 @@ let { ic, it, w, h, mg, color, src } = defineProps([
 ]);
 //em 会导致逐级放大或缩小，将其处理为1em
 let processUnit = (val) => {
-  // if (val.endsWith("em") && !val.endsWith("rem")) {
-  //   return "1em";
-  // }
+  if (val.endsWith("em") && !val.endsWith("rem")) {
+    return "1em";
+  }
   return val;
 };
 let pw = processUnit(w);

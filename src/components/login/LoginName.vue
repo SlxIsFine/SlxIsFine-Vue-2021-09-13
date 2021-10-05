@@ -37,7 +37,7 @@
       <Icon w="16px" h="16px" ic="phone" />
       手机验证码登录
     </label>
-    <label style="color: rgb(180, 50, 60)" class="cursor-pointer"> 立即注册</label>
+    <label style="color: rgb(180, 50, 60)" class="cursor-pointer" @click="route('register')"> 立即注册</label>
   </div>
 </template>
 <script setup>

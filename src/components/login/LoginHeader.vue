@@ -5,13 +5,16 @@
   </div>
 </template>
 <script setup>
-import { defineProps, ref } from "@vue/runtime-core";
+import { computed, defineProps, ref, toRefs, watchEffect } from "@vue/runtime-core";
 import Logo from "../common/UI/Logo.vue";
-let { title } = defineProps({
+let props = defineProps({
   title: {
     default: "用户登录",
   },
 });
+console.log('props',props)
+let title=computed(()=>props.title)
+
 </script>
 <style lang="scss" scoped>
 .login-header {

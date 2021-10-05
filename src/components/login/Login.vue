@@ -9,15 +9,24 @@
 <script setup>
 import { useRouter } from "vue-router";
 import LoginHeader from "./LoginHeader.vue";
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
 
 let router = useRouter();
-let route = ref(router.currentRoute.value.name);
-let title = computed(() => routeMap[route.value] || "用户登录");
+let route = router.currentRoute;
+let title=ref("用户登录")
+
+// let title = computed(() => {
+//   console.log(routeMap[route.value.name])
+//  return routeMap[route.value.name] || "用户登录";
+// });
 let routeMap = {
   login: "用户登录",
   register: "用户注册",
 };
+watchEffect(()=>{
+title.value=routeMap[route.value.name]
+})
+
 </script>
 <style lang="scss" scoped>
 .login {
