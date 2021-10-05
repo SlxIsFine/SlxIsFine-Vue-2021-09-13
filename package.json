@@ -11,6 +11,7 @@
     "echarts": "^5.1.2",
     "element-plus": "^1.0.2-beta.48",
     "moment": "^2.29.1",
+    "style-loader": "^3.3.0",
     "vue": "^3.0.5",
     "vue-router": "4",
     "vue-upload-component": "^3.0.50",

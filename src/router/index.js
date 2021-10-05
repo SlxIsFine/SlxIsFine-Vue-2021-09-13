@@ -30,14 +30,14 @@ const routes = [
           path: ':submenu',
           name: 'opera',
           component: () => import('../components/market/Opera.vue')
-        },
-        {
-          path: '/nftInfo',
-          name: 'nftInfo',
-          component: () => import('../components/market/nftInfo/NftInfo.vue')
-        },
+        }
 
         ]
+      },
+      {
+        path: '/nftInfo',
+        name: 'nftInfo',
+        component: () => import('../components/market/nftInfo/NftInfo.vue')
       },
       {
         path: '/Collection',
@@ -111,6 +111,11 @@ const routes = [
         component: () => import("../components/personalPage/onShelf/OnShelf.vue")
       },
       {
+        path: "/willSale",
+        name: "willSale",
+        component: () => import("../components/personalPage/willSale.vue")
+      },
+      {
         path: "/moneyDetail",
         name: "moneyDetail",
         component: () => import("../components/personalPage/moneyDetail/moneyDetail.vue")
@@ -128,13 +133,44 @@ const routes = [
 
   , {
     path: "/login",
-    name: "login",
-    component: () => import("../views/Login.vue")
-  }, {
-    path: "/register",
-    name: "register",
-    component: () => import("../views/Register.vue")
-  }
+    name: "loginMain",
+    component: () => import("../components/login/Login.vue"),
+    children:[
+      {
+        path: "/login",
+        name: "login",
+        component: () => import("../components/login/LoginPanel.vue"),
+        children:[
+          {
+            path: "byName",
+            name: "loginByName",
+            component: () => import("../components/login/LoginName.vue"),
+          },
+          {
+            path: "byPhone",
+            name: "loginByPhone",
+            component: () => import("../components/login/LoginPhone.vue"),
+          },
+          {
+            path: "byWechat",
+            name: "loginByWechat",
+            component: () => import("../components/login/LoginWechat.vue"),
+          }
+        ]
+      },
+      {
+        path: "/register",
+        name: "register",
+        component: () => import("../components/login/Register.vue"),
+      },
+  
+    ]
+  },
+  //  {
+  //   path: "/register",
+  //   name: "register",
+  //   component: () => import("../views/Register.vue")
+  // }
 ]
 
 const router = createRouter({

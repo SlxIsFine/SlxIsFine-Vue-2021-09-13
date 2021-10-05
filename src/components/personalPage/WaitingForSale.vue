@@ -10,7 +10,7 @@
         <div class="sj-btn" @click="route('onShelf')">上架</div>
       </div>
     </SiderCardBox>
-    <div class="view-all">查看全部</div>
+    <div class="view-all" @click="route('willSale')">查看全部</div>
   </div>
 </template>
 <script setup>

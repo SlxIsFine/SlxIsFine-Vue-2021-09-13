@@ -78,10 +78,10 @@
           发布
         </ColorButton>
 
-        <span>
+        <div>
           <input type="radio" id="agree-radio" />
           <label for="agree-radio"> 同意《福客空间NFT发布规范》 协议 </label>
-        </span>
+        </div>
       </div>
     </div>
   </div>

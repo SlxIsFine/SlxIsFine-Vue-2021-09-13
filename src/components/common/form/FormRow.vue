@@ -5,7 +5,7 @@
       :style="{ marginRight: gap, width: labelWidth, verticalAlign, textAlign: align,textAlignLast:align }"
     >
       <slot name="label">
-       <span> {{ label }}</span>
+       <span class="form-row-label"> {{ label }}</span>
         <!-- <span style="width: 100%; height: 0px; display: inline-block;line-height:0px" v-if="align=='justify'"></span> -->
         <!-- <span class="label-text">{{ label }}</span> -->
       </slot>

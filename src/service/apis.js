@@ -23,3 +23,12 @@ export function verifyCaptcha() {
     let url = URL.captcha.verifyCaptcha
     return postForm(url)
 }
+
+/**
+ * 获取商品信息
+ * 
+ */
+export function getGoodsInfo(){
+    let url=URL.goodsInfo.getGoodsInfo
+    return postForm(url)
+}

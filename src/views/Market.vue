@@ -1,51 +1,71 @@
 <template>
-  <div v-if="currentRoute == '/market'" class="market">
-    <!-- <Left /> -->
-    <Right />
-    <div class="cards-box">
-      <Card1 v-for="(v, i) in cards1" :key="i" :card="v" />
-      <Card v-for="(v, i) in cards" :key="i" :card="v" />
-    </div>
-    <!-- <CardsBox :cardsbox="{ cards: cards1 }" type="card1" />
-    <CardsBox :cardsbox="{ cards }" /> -->
+  <div class="market">
+    <TabList :config="tabConfig" />
   </div>
-  <router-view v-else :key="$route.path" />
 </template>
 
 <script setup>
-import Left from "@/components/market/Left.vue";
-import Right from "@/components/market/Right.vue";
-import Card from "@/components/common/Card.vue";
-import Card1 from "@/components/common/Card1.vue";
-import CardsBox from "@/components/common/CardsBox.vue";
-import { reactive, ref } from "@vue/reactivity";
-import { watchEffect } from "@vue/runtime-core";
-import { useRouter } from "vue-router";
-import { useStore } from "vuex";
-import opera1 from "../assets/img/opera.png";
-const router = useRouter();
-const store = useStore();
-const currentRoute = ref("");
-let card = store.state.cards[0];
-let cards = Array(5).fill(card);
-card = Object.assign({}, card);
-card.endtime = "";
-cards.push(...Array(10).fill(card));
-const cards1 = Array(5).fill({
-  img: opera1,
-  issuer: "发行人",
-  name: "系列（团体）名称",
-  intro: "团体介绍团体介绍团体介绍团体介绍团体介绍团体介绍",
+import TabList from "@/components/personalPage/TabList.vue";
+import MarketForm from "@/components/market/MarketForm.vue";
+import MarketHeader from "@/components/market/MarketHeader.vue";
+import { reactive, markRaw } from "vue";
+import {getGoodsInfo} from "@/service/apis.js"
+const tabConfig = reactive({
+  data: [
+    {
+      name: "全部",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "京剧",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "武术",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "民谣",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "中华民歌",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "杂技",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "剧本杀",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+    {
+      name: "其他",
+      component: markRaw(MarketForm),
+      componentProps: {},
+    },
+  ],
+  headerComponent: markRaw(MarketHeader),
+  headerProps:{
+    title:"模块:"
+  }
 });
-watchEffect(() => (currentRoute.value = router.currentRoute.value.path));
+getGoodsInfo().then((res)=>{
+console.log(res)
+})
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .market {
-  // margin: 0 0 10px 360px;
-  margin: 0 0 10px 20px;
-  width: 1880px;
-  box-sizing: border-box;
-  @include flex($fd: column);
-  background-color: #fff;
+  width: 90%;
+  margin: 12px auto;
+  height: calc(100vh - 120px);
 }
 </style>

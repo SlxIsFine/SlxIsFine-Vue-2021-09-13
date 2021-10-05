@@ -46,17 +46,20 @@ const blur = function () {
 </script>
 <style lang="scss" scoped>
 .color-btn {
+  display: inline-block;
   min-width: 32px;
   min-height: 16px;
   color: black;
   cursor: pointer;
   width: 48px;
+  vertical-align: middle;
   height: 32px;
+  user-select: none;
   --normal-color: white;
   --active-color: "#c02431";
   --normal-text-color: black;
   --active-text-color: "#c02431";
-  background-color: var(--normal-color);
+  background: var(--normal-color);
   color: var(--normal-text-color);
 text-align: center;
   div,
@@ -68,6 +71,6 @@ text-align: center;
 .color-btn:hover,
 .active {
   color: var(--active-text-color);
-  background-color: var(--active-color);
+  background: var(--active-color);
 }
 </style>

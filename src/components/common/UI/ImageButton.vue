@@ -1,6 +1,6 @@
 <template>
   <div
-    :style="{ backgroundImage: `url(${curImg})` }"
+    :style="{ backgroundImage: `url(${curImg})`, width: w, height: h }"
     @mousedown="mouseDown"
     @mouseleave="mouseLeave"
     @mouseover="mouseOver"
@@ -8,10 +8,13 @@
   ></div>
 </template>
 <script setup>
-import { defineProps, defineEmit, computed,ref } from "vue";
-const props = defineProps(["normalImg", "hoverImg", "activeImg"]);
+import { defineProps, defineEmit, computed, ref, useContext, toRefs } from "vue";
+
+const props = defineProps(["normalImg", "hoverImg", "activeImg", "active", "w", "h"]);
+
+let { w, h } = toRefs(props);
 let isHover = ref(false);
-let isActive = ref(false);
+let isActive = ref(props.active);
 
 let mouseDown = () => {
   isActive.value = !isActive.value;
@@ -20,7 +23,7 @@ let mouseLeave = () => {
   isHover.value = false;
 };
 let mouseOver = () => {
-  isHover.value = true
+  isHover.value = true;
 };
 let curImg = computed(() => {
   let res = props.normalImg;
@@ -32,16 +35,17 @@ let curImg = computed(() => {
     res = props.hoverImg || res;
     return res;
   }
-  return res
+  return res;
 });
 </script>
 <style lang="scss" scoped>
-.image-button{
-    min-width: 16px;
-    min-height: 16px;
-    background-size: 100% 100%;
-    background-position: center center;
-    background-repeat: no-repeat;
-    cursor: pointer;
+.image-button {
+  display: inline-block;
+  min-width: 16px;
+  min-height: 16px;
+  background-size: 100% 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 </style>

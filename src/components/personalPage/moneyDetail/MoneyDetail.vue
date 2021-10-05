@@ -8,7 +8,7 @@
 </template>
 <script setup>
 import FormHeader from "@/components/common/UI/FormHeader.vue";
-import TimeLine from "../../../components/personalPage/moneyDetail/TimeLine.vue";
+import TimeLine from "@/components/personalPage/moneyDetail/TimeLine.vue";
 let items = [
   {
     content: "提现到建设银行(8346) 100元 到账时间：2021-09-025 12:01 余额：12345元",

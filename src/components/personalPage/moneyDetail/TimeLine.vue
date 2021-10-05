@@ -10,7 +10,7 @@
   </el-timeline>
 </template>
 <script setup>
-import { defineProps } from "@vue/runtime-core";
+import { defineProps } from "vue";
 
 let {items}=defineProps({
     items:{

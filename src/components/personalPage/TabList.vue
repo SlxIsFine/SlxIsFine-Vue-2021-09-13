@@ -30,7 +30,15 @@ export default defineComponent({
   props: {
     config: {
       default: {
-        data: [{ name: "我拥有的NFT", component: Own, componentProps: {} }],
+        data: [
+          {
+            name: "我拥有的NFT",
+            component: Own,
+            componentProps: {},
+          },
+        ],
+        headerComponent: TabHeader,
+        headerProps: {},
       },
     },
   },
@@ -46,6 +54,7 @@ export default defineComponent({
      * }
      */
     let { config } = toRefs(props);
+
     let labels = computed(() =>
       config.value.data.map((v, k) => {
         return { name: v.name, id: k };
@@ -62,11 +71,12 @@ export default defineComponent({
           className: "row tab-list",
         },
         [
-          h(TabHeader, {
+          h(config.value.headerComponent ||TabHeader, {
             labels: labels.value,
             tabChange: markRaw((val) => {
               curCompId.value = val.id;
             }),
+            customProps:config.value.headerProps||{}
           }),
           h(
             "div",

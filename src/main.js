@@ -12,7 +12,7 @@ app.component(ElUpload.name, ElUpload);
 app.component(ElIcon.name, ElIcon);
 app.component(ElDialog.name, ElDialog);
 app.component(ElTimeline.name, ElTimeline);
-app.component(ElTimelineItem.name, ElDialog);
+app.component(ElTimelineItem.name, ElTimelineItem);
 app.component('file-uploader', VueUploadComponent)
 // app.component(ElRow.name,ElRow)
 // app.component(ElCol.name,ElCol)

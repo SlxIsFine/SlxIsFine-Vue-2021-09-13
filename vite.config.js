@@ -40,5 +40,6 @@ export default defineConfig({
     },
     optimizeDeps: {
         include: ['echarts']
-    }
+    },
+
 })

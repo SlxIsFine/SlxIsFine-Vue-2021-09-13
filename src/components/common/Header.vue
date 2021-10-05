@@ -69,24 +69,24 @@ const tabs = reactive([
   {
     name: "市场",
     router: "/market",
-    submenu: [
-      {
-        text: "全部",
-        name: "all"
-      },
-      {
-        text: "京剧戏曲",
-        name: "opera"
-      },
-      {
-        text: "中国武术",
-        name: "kungfu"
-      },
-      {
-        text: "民谣歌曲",
-        name: "folk"
-      }
-    ]
+    // submenu: [
+    //   {
+    //     text: "全部",
+    //     name: "all"
+    //   },
+    //   {
+    //     text: "京剧戏曲",
+    //     name: "opera"
+    //   },
+    //   {
+    //     text: "中国武术",
+    //     name: "kungfu"
+    //   },
+    //   {
+    //     text: "民谣歌曲",
+    //     name: "folk"
+    //   }
+    // ]
   },
   {
     name: "个人主页",
@@ -104,10 +104,10 @@ const tabs = reactive([
   //   name: "统计数据",
   //   router: "/statistic-data",
   // },
-  {
-    name: "我的钱包",
-    router: "/my-wallet"
-  }
+  // {
+  //   name: "我的钱包",
+  //   router: "/my-wallet"
+  // }
 ]);
 
 onMounted(() => {
