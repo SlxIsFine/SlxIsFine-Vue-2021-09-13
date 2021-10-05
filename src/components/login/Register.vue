@@ -9,7 +9,7 @@
         gap="32px"
       >
         <template v-slot:content>
-          <FileUploader>
+          <FileUploader @selectFile="handleSelectFile" ref="avatarUploader">
             <Icon :src="addFile" w="100px" h="100px" />
           </FileUploader>
         </template>
@@ -129,7 +129,12 @@
         >
         <div class="row">
           <span class="rd cursor-pointer">手机号一键注册</span>
-          <span class="rd cursor-pointer" style="position: absolute; right: 0px" @click="route('loginByWechat')">微信扫码</span>
+          <span
+            class="rd cursor-pointer"
+            style="position: absolute; right: 0px"
+            @click="route('loginByWechat')"
+            >微信扫码</span
+          >
         </div>
         <div class="row">
           <label for="agree-register">
@@ -151,12 +156,18 @@ import FileUploader from "@/components/common/form/FileUploader.vue";
 import Icon from "@/components/common/UI/Icon.vue";
 import ColorButton from "@/components/common/UI/ColorButton.vue";
 import { useRouter } from "vue-router";
+import { onMounted, ref } from "@vue/runtime-core";
 
 let router = useRouter();
 let route = (name) => {
   router.push({ name: name });
 };
 
+//头像上传组件
+let avatarUploader = ref(null);
+//avatarUploader.value.clearFiles 删除所有文件
+//选择文件，第一个参数是当前选择的文件，第二个是所有的文件
+let handleSelectFile = (file, fileList) => {};
 </script>
 <style lang="scss" scoped>
 .register {
